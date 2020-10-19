@@ -11,6 +11,7 @@ var login_attempt = () => {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var login_report = JSON.parse(this.response);
+          alert(login_report["Role_ID"])
           if(login_report["login_successful"]){
               if(login_report["Role_ID"] == 1001)
               {
