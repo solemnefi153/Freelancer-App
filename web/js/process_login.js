@@ -12,7 +12,7 @@ var login_attempt = () => {
         if (this.readyState == 4 && this.status == 200) {
           var login_report = JSON.parse(this.response);
           if(login_report["login_successful"]){
-              if(login_report["role"] == "admin")
+              if(login_report["Role_ID"] == 1001)
               {
                 window.location.replace("../pages/admin_portal.php");
               }

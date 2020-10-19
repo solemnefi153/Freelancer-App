@@ -8,7 +8,7 @@
         <header>
             <span>LOGO</span>
             <?php echo "<spam>" .  $_SESSION["user_name"] . " " . $_SESSION["user_last_name"] . "</spam>";?>
-            <a href="./home.php">Home</a>
+            <a href="./client_portal.php">Home</a>
         </header>
         <br><br>
         <main>

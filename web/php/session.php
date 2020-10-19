@@ -2,9 +2,9 @@
    session_start(); 
 
    //Set up all the $_SESSION valiables 
-   if(!isset($_SESSION["active_login"]))
+   if(!isset($_SESSION["Active_Login"]))
    {
-      $_SESSION["active_login"] = false;
+      $_SESSION["Active_Login"] = false;
    }
    if(!isset($_SESSION["db"]))
    {
