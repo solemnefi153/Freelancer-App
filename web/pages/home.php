@@ -8,15 +8,29 @@
     <body>
         <header>
             <span>LOGO</span>
+            <?php echo "<spam>" .  $_SESSION["user_name"] . " " . $_SESSION["user_last_name"] . "</spam>";?>
+            <a href="./home.php">Home</a>
+
         </header>
+        <br><br>
+
         <main>
-                <div id="login_error_message"></div>
-                <label for="username">Username</label>
-                <input id="username" name="username" type="text" required>
-                <label for="password">Password</label>
-                <input id="password" name="password" type="text" required>
-                <button onclick="login_attempt()" >Sing In</button>
+                <!--This select statement will be popilated with a query from the datavase-->
+                <select>
+                    <option value="none">- - -</option>
+                    <option value="Master">Master</option>
+                    <option value="The Best Client">The Best Client</option>
+                </select>
+                <button>Go</button>
+                <br><br>
+                <button >Create New Client</button>
+                <br><br>
+                <button>View My Services</button>
+                <br><br>
+                <button>Create New Service</button>
+                <br><br>
         </main>
+
         <footer>
 
         </footer>

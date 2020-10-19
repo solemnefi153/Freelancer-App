@@ -5,6 +5,7 @@ var notify_invalid_login = () => {
 
 
 var login_attempt = () => {
+    
     var username = document.getElementById('username').value
     var password = document.getElementById('password').value
     xhttp = new XMLHttpRequest();
@@ -19,8 +20,8 @@ var login_attempt = () => {
               notify_invalid_login();
           }
         }
-    };
+    }
     xhttp.open("POST", "../php/process_login.php", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("username=" + username + "&password=" + password);
 }
