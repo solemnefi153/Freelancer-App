@@ -11,9 +11,9 @@ var login_attempt = () => {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var login_report = JSON.parse(this.response);
-          alert(login_report["Role_ID"])
+          alert(login_report["role_id"])
           if(login_report["login_successful"]){
-              if(login_report["Role_ID"] == 1001)
+              if(login_report["role_id"] == 1001)
               {
                 window.location.replace("../pages/admin_portal.php");
               }
