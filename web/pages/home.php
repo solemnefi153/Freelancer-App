@@ -15,20 +15,41 @@
         <br><br>
 
         <main>
-                <!--This select statement will be popilated with a query from the datavase-->
-                <select>
-                    <option value="none">- - -</option>
-                    <option value="Master">Master</option>
-                    <option value="The Best Client">The Best Client</option>
-                </select>
-                <button>Go</button>
-                <br><br>
-                <button >Create New Client</button>
-                <br><br>
-                <button>View My Services</button>
-                <br><br>
-                <button>Create New Service</button>
-                <br><br>
+                <?php
+                if($_SESSION["role"] == "admin"){
+                    #This select statement will be populated with a query from the datavase
+                    echo "<select>";
+                    echo "    <option value='none'>- - -</option>";
+                    echo "    <option value='Master'>Master</option>";
+                    echo "    <option value='The Best Client'>The Best Client</option>";
+                    echo "</select>";
+                    echo "<button>Go</button>";
+                    echo "<br><br>";
+                    echo "<button >Create New Client</button>";
+                    echo "<br><br>";
+                    echo "<button>View My Services</button>";
+                    echo "<br><br>";
+                    echo "<button>Create New Service</button>";
+                    echo "<br><br><br><br>";
+                }
+                else if($_SESSION["role"] == "client")
+                {
+                    echo "<span>" . $_SESSION['organization'] . "<span>";
+                    echo "<br><br>";
+                    echo "<button >Current Projects</button>";
+                    echo "<br><br>";
+                    echo "<button >Finished Projects</button>";
+                    echo "<br><br>";
+                }
+
+                ?>
+
+
+                
+
+
+
+
         </main>
 
         <footer>

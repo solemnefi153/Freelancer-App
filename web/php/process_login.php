@@ -11,6 +11,7 @@
     $_SESSION["active_login"] = true;
     $_SESSION["user_name"] = "Nefi";
     $_SESSION["user_last_name"] = "Aguilar";
+    $_SESSION["organization"] = "Marketing Scale";
     $_SESSION["role"] = "admin";
 
     $bool = true;
