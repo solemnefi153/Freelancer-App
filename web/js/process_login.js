@@ -1,5 +1,4 @@
 var notify_invalid_login = () => {
-    alert("Invalid Login");
     document.getElementById("login_error_message").innerHTML = "Invalid username or passowrd"
 }
 
@@ -11,9 +10,16 @@ var login_attempt = () => {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          var login_successful = JSON.parse(this.response);
-          if(login_successful){
-              window.location.replace("../pages/home.php");
+          var login_report = JSON.parse(this.response);
+          if(login_report["login_successful"]){
+              if(login_report["role"] == "admin")
+              {
+                window.location.replace("../pages/admin_portal.php");
+              }
+              else
+              {
+                window.location.replace("../pages/client_portal.php");
+              }
           }
           else{
 

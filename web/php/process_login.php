@@ -14,8 +14,7 @@
     $_SESSION["organization"] = "Marketing Scale";
     $_SESSION["role"] = "admin";
 
-    $bool = true;
-    echo json_encode($bool);   
-
+    $login_report = array("login_successful" => true, "role" =>"admin");
+    echo json_encode($login_report);   
 ?>
 
