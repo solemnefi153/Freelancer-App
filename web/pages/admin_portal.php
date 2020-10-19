@@ -9,7 +9,7 @@
         <header>
             <span>LOGO</span>
             <?php echo "<spam>" .  $_SESSION["user_name"] . " " . $_SESSION["user_last_name"] . "</spam>";?>
-            <a href="./home.php">Home</a>
+            <a href="./admin_portal.php">Home</a>
         </header>
         <br><br>
         <main>
@@ -30,7 +30,7 @@
                 <br><br><br><br>
             </div>
             <div id='secondaly_controls'>
-                
+
             </div>
             <div id='content_section'>
             </div>      
