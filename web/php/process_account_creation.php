@@ -31,6 +31,7 @@
         if(sizeof($username) != 1)
         {
             echo "Username already exists";
+            echo $username[0]['username'];
             die();
         }
     }
