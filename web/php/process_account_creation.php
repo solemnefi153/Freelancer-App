@@ -7,7 +7,7 @@
 <?php
     #Grab the information submited through the form
     $role_id = (int)test_input($_POST['role_id']);
-    $username = test_input($_POST['username']);
+    $user = test_input($_POST['username']);
     $password = test_input($_POST['password']);
     $password = password_hash($password, PASSWORD_DEFAULT);
     $organization = test_input($_POST['organization']);
@@ -23,15 +23,15 @@
     try{
         #check if the username already exists in the database
         $stmt = $db->prepare('SELECT username FROM users WHERE username = :username');
-        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':username', $user, PDO::PARAM_STR);
         $stmt->execute();
-        $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         #check if the username is as used by another person
-        if(sizeof($username) != 1)
+        if(sizeof($rows) != 1)
         {
             echo "Username already exists";
-            echo $username[0]['username'];
+            echo $rows[0]['username'];
             die();
         }
     }
