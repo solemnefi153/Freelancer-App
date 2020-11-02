@@ -37,6 +37,7 @@ var create_account_attempt = () => {
     var phone_number = document.getElementById('phone_number').value
     var email = document.getElementById('email').value
 
+
     if(username == ""
     || password == ""
     || password2 == ""

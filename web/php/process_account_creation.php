@@ -6,7 +6,7 @@
 <?php include './test_input.php' ?>
 <?php
     #Grab the information submited through the form
-    $role_id = test_input($_POST['role']);
+    $role_id = (int)test_input($_POST['role']);
     $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
     $password = password_hash($password, PASSWORD_DEFAULT);
@@ -31,7 +31,6 @@
             echo "Username already exists";
             die();
         }
-        echo "this is happenging";
     }
     catch (PDOException $ex)
     {
@@ -40,9 +39,6 @@
         echo  'Error!: ' . $ex->getMessage();
         die();
     }
-
-
-
 
     #If the username does not exist attempt to create the username
     try
