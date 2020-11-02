@@ -12,12 +12,11 @@ CREATE TABLE users (
   organization varchar NOT NULL,
   first_name varchar  NOT NULL,
   last_name varchar  NOT NULL,
-  phone_number int,
+  phone_number varchar,
   email varchar,
   notes text,
   PRIMARY KEY (user_id), 
   FOREIGN KEY (role_id) REFERENCES roles (role_id), 
-  UNIQUE (first_name,last_name, organization)
 );
 
 CREATE TABLE project_types (

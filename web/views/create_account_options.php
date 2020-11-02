@@ -9,14 +9,19 @@ echo <<<EOD
 <div>
 <span style="font-size:1.25rem;">Account type: </span>
 <select id="account_type">
-    <option>Admin</option>
+    <option value="1001">Admin</option>
 </select>
 </div>
-
+<br>
+<input type="text" class="text_input" id="organization" placeholder="Organization" name="organization">
+<input type="text" class="text_input" id="first_name" placeholder="First Name" name="first_name">
+<input type="text" class="text_input" id="last_name" placeholder="Last Name" name="last_name">
+<input type="tel" class="text_input" id="phone_number" placeholder="Phone number" name="phone_number">
+<input type="email" class="text_input" id="email" placeholder="Email" name="email">
 <br>
 <input type="button" class="button seconday_btn" onclick="create_account_attempt()" value="Create Account">
 <br><br>
-<a onclick="load_log_in()" href='#'> <- Go back to Log In page</a>
+<span onclick="load_log_in()" class="navegation_link"> <- Go back to Log In page</span>
 EOD;
 
 ?> 
