@@ -32,7 +32,7 @@
         if(sizeof($rows) != 1)
         {
             echo "Username already exists";
-            echo $rows[0]['username'];
+            echo sizeof($rows);
             die();
         }
     }
