@@ -71,7 +71,7 @@ var create_account_attempt = () => {
                  if (response.includes("true"))
                  {
                      //redirect to the the user home page
-                     window.location.href = "./login_create_account?account_created=true";
+                     window.location.href = "./login_create_account.php?account_created=true";
                  }
                  else
                  {
@@ -82,7 +82,7 @@ var create_account_attempt = () => {
                  }
             }
         }
-        var query = (
+        var query = 
           'username=' + username 
         + '&password=' + password 
         + '&role_id=' + role_id
@@ -91,7 +91,7 @@ var create_account_attempt = () => {
         + '&last_name=' + last_name
         + '&phone_number=' + phone_number 
         + '&email=' + email
-        )
+        
         xhttp.open('POST', '../php/process_account_creation.php', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(query);
