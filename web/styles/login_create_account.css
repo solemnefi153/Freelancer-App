@@ -1,4 +1,4 @@
-#login_group{
+#main_group{
     margin-left: auto;
     margin-right: auto;
     margin-top: 5rem;
@@ -29,6 +29,16 @@
 .alert{
     width: 20rem;
     text-align: center;
+}
+
+#account_type{
+    height: 2rem;
+    font-size: 1.5rem;
+    width: 10rem;
+    margin-top: 1rem;
+    text-align: center;
+    color:gray;
+    border-color: gray;
 }
 
 
