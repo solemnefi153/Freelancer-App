@@ -16,7 +16,7 @@
     $phone = test_input($_POST['phone']);
     $email = test_input($_POST['email']);
 
-    echo $username;
+    echo $user;
     
     #Create variable to store the status of this request
     $account_creation_status = "";
