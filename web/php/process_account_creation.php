@@ -15,8 +15,9 @@
     $last_name = test_input($_POST['last_name']);
     $phone = test_input($_POST['phone']);
     $email = test_input($_POST['email']);
-    
+
     echo $username;
+    
     #Create variable to store the status of this request
     $account_creation_status = "";
     try{
@@ -25,7 +26,8 @@
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        #check if there is already someone with the same name, lastname, and company
+
+        #check if the username is as used by another person
         if(sizeof($username) != 1)
         {
             echo "Username already exists";
