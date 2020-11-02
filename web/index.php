@@ -4,7 +4,7 @@
    if($_SESSION['active_login'] != true)
    {
       #If there is not an active session then redirect to the login page
-      header ("Location: https://freelancer-path.herokuapp.com/views/sign_in.php");
+      header ("Location: https://freelancer-path.herokuapp.com/views/login_create_account.php");
    }
    else{
       #if there is an active session check if the session is for a client or an admin 

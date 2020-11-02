@@ -1,0 +1,12 @@
+header{
+    background-color: #173F5F;
+    height: 4rem;
+}
+
+#logo{
+    height: 7rem;
+    width: 10rem;
+    position: relative;
+    bottom: 1.5rem;
+}
+

@@ -8,7 +8,7 @@ CREATE TABLE users (
   user_id int NOT NULL UNIQUE,
   role_id int NOT NULL,
   username varchar UNIQUE,
-  Password varchar,
+  password varchar,
   organization varchar NOT NULL,
   first_name varchar  NOT NULL,
   last_name varchar  NOT NULL,
