@@ -29,7 +29,7 @@
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         #check if the username is as used by another person
-        if(sizeof($rows) != 1)
+        if(sizeof($rows) != 0)
         {
             echo "Username already exists";
             echo sizeof($rows);
