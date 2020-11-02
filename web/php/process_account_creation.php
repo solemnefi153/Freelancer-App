@@ -6,7 +6,7 @@
 <?php include './test_input.php' ?>
 <?php
     #Grab the information submited through the form
-    $role_id = (int)test_input($_POST['role']);
+    $role_id = (int)test_input($_POST['role_id']);
     $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
     $password = password_hash($password, PASSWORD_DEFAULT);
