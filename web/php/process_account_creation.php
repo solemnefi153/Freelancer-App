@@ -7,13 +7,13 @@
 <?php
     #Grab the information submited through the form
     $role_id = (int)test_input($_POST['role_id']);
-    $user = test_input($_POST['username']);
+    $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
     $password = password_hash($password, PASSWORD_DEFAULT);
     $organization = test_input($_POST['organization']);
     $first_name = test_input($_POST['first_name']);
     $last_name = test_input($_POST['last_name']);
-    $phone = test_input($_POST['phone']);
+    $phone_number = test_input($_POST['phone']);
     $email = test_input($_POST['email']);
 
     echo $user;
@@ -24,7 +24,7 @@
     try{
         #check if the username already exists in the database
         $stmt = $db->prepare('SELECT username FROM users WHERE username=:username');
-        $stmt->bindValue(':username', $user, PDO::PARAM_STR);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -32,7 +32,6 @@
         if(sizeof($rows) != 0)
         {
             echo "Username already exists";
-            echo sizeof($rows);
             die();
         }
     }
