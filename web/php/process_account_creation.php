@@ -19,44 +19,54 @@
 
     #Create variable to store the status of this request
     $account_creation_status = "";
-
-    #check if the username already exists in the database
-    $stmt = $db->prepare('SELECT username FROM users WHERE username=:username');
-    $stmt->bindValue(':username', $username, PDO::PARAM_INT);
-    $stmt->execute();
-    $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    #check if there is already someone with the same name, lastname, and company
-    if(sizeof($username) != 0)
-    {
-        $account_creation_status = "Username already exists";
-        #we will try exit()
+    try{
+        #check if the username already exists in the database
+        $stmt = $db->prepare('SELECT username FROM users WHERE username=:username');
+        $stmt->bindValue(':username', $username, PDO::PARAM_INT);
+        $stmt->execute();
+        $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            #check if there is already someone with the same name, lastname, and company
+        if(sizeof($username) != 0)
+        {
+            echo "Username already exists";
+            die();
+        }
     }
+    catch (PDOException $ex)
+    {
+        #echo if there are any errors in the database
+        #This is very helpful for debugging
+        echo  'Error!: ' . $ex->getMessage();
+        die();
+    }
+
+
+
+
     #If the username does not exist attempt to create the username
-    else
+    try
     {
-        try
-        {
-            #Create the username in the database
-            $stmt = $db->prepare("INSERT INTO users (user_id, role_id, username, password, organization, first_name, last_name, phone_number, email)VALUES ( nextval('users_sequence'), :role_id, :username, :password, :organization, :first_name, :last_name, :phone_number, :email);");
-            $stmt->bindValue(':role_id', $role_id, PDO::PARAM_INT);
-            $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-            $stmt->bindValue(':password', $password, PDO::PARAM_STR);
-            $stmt->bindValue(':organization', $organization, PDO::PARAM_STR);
-            $stmt->bindValue(':first_name', $first_name, PDO::PARAM_STR);
-            $stmt->bindValue(':last_name', $last_name, PDO::PARAM_STR);
-            $stmt->bindValue(':phone_number', $phone_number, PDO::PARAM_STR);
-            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-            $stmt->execute();
-            $account_creation_status = "true";
-        }
-        catch (PDOException $ex)
-        {
-            #Save the error in the account_creation_status variable
-            #This is very helpful for debugging
-            $account_creation_status = 'Error!: ' . $ex->getMessage();
-        }
+        #Create the username in the database
+        $stmt = $db->prepare("INSERT INTO users (user_id, role_id, username, password, organization, first_name, last_name, phone_number, email)VALUES ( nextval('users_sequence'), :role_id, :username, :password, :organization, :first_name, :last_name, :phone_number, :email);");
+        $stmt->bindValue(':role_id', $role_id, PDO::PARAM_INT);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->bindValue(':organization', $organization, PDO::PARAM_STR);
+        $stmt->bindValue(':first_name', $first_name, PDO::PARAM_STR);
+        $stmt->bindValue(':last_name', $last_name, PDO::PARAM_STR);
+        $stmt->bindValue(':phone_number', $phone_number, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $account_creation_status = "true";
     }
+    catch (PDOException $ex)
+    {
+        #Save the error in the account_creation_status variable
+        #This is very helpful for debugging
+        $account_creation_status = 'Error!: ' . $ex->getMessage();
+    }
+  
+    
     #Send back the status of the request
     echo $account_creation_status;
 ?>
