@@ -23,7 +23,6 @@ var login_attempt = () => {
               }
           }
           else{
-
               notify_invalid_login();
           }
         }

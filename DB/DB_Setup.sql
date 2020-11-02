@@ -1,132 +1,133 @@
-CREATE TABLE Roles (
-  Role_ID int,
-  Description varchar  NOT NULL,
-  PRIMARY KEY (Role_ID)
+CREATE TABLE roles (
+  role_id int NOT NULL UNIQUE,
+  description varchar  NOT NULL UNIQUE,
+  PRIMARY KEY (role_id)
 );
 
-CREATE TABLE Users (
-  User_ID int,
-  Role_ID int NOT NULL,
-  Username varchar,
+CREATE TABLE users (
+  user_id int NOT NULL UNIQUE,
+  role_id int NOT NULL,
+  username varchar UNIQUE,
   Password varchar,
-  Organization varchar NOT NULL,
-  First_Name varchar  NOT NULL,
-  Last_Name varchar  NOT NULL,
-  Phone_Number int,
-  Email varchar,
-  Notes text,
-  PRIMARY KEY (User_ID), 
-  FOREIGN KEY (Role_ID) REFERENCES Roles (Role_ID) 
+  organization varchar NOT NULL,
+  first_name varchar  NOT NULL,
+  last_name varchar  NOT NULL,
+  phone_number int,
+  email varchar,
+  notes text,
+  PRIMARY KEY (user_id), 
+  FOREIGN KEY (role_id) REFERENCES roles (role_id), 
+  UNIQUE (first_name,last_name, organization)
 );
 
-CREATE TABLE Project_Types (
-  Project_Type_ID int,
+CREATE TABLE project_types (
+  project_type_id int UNIQUE,
+  Description varchar  NOT NULL UNIQUE,
+  PRIMARY KEY (project_type_id)
+);
+
+CREATE TABLE steps_for_each_project_type (
+  steps_id int NOT NULL,
+  project_type_id int NOT NULL,
+  num_of_steps int  NOT NULL,
+  name_step_1 varchar ,
+  approved_by_customer_s1 bool,
+  name_step_2 varchar,
+  approved_by_customer_s2 bool,
+  name_step_3 varchar,
+  approved_by_customer_s3 bool,
+  name_step_4 varchar,
+  approved_by_customer_s4 bool,
+  name_step_5 varchar,
+  approved_by_customer_s5 bool,
+  name_step_6 varchar,
+  approved_by_customer_s6 bool,
+  name_step_7 varchar,
+  approved_by_customer_s7 bool,
+  name_step_8 varchar,
+  approved_by_customer_s8 bool,
+  name_step_9 varchar,
+  approved_by_customer_s9 bool,
+  name_step_10 varchar,
+  approved_by_customer_s10 bool,
+  name_step_11 varchar,
+  approved_by_customer_s11 bool,
+  name_step_12 varchar,
+  approved_by_customer_s12 bool,
+  name_step_13 varchar,
+  approved_by_customer_s13 bool,
+  name_step_14 varchar,
+  approved_by_customer_s14 bool,
+  name_step_15 varchar,
+  approved_by_customer_s15 bool,
+  PRIMARY KEY (steps_id), 
+  FOREIGN KEY (project_type_id) REFERENCES project_Types (project_type_id)
+);
+
+CREATE TABLE project_status (
+  project_status_id int NOT NULL,
+  steps_id int NOT NULL,
+  num_of_steps int   NOT NULL,
+  approved_step_1 boolean,
+  approved_step_2 boolean,
+  approved_step_3 boolean,
+  approved_step_4 boolean,
+  approved_step_5 boolean,
+  approved_step_6 boolean,
+  approved_step_7 boolean,
+  approved_step_8 boolean,
+  approved_step_9 boolean,
+  approved_step_10 boolean,
+  approved_step_11 boolean,
+  approved_step_12 boolean,
+  approved_step_13 boolean,
+  approved_step_14 boolean,
+  approved_step_15 boolean,
+  PRIMARY KEY (project_status_id), 
+  FOREIGN KEY (steps_id) REFERENCES steps_for_each_project_type (steps_id)
+);
+
+CREATE TABLE projects (
+  project_id int,
+  project_type_id int NOT NULL,
+  admin_id int NOT NULL,
+  customer_id int NOT NULL,
+  steps_id int NOT NULL,
+  project_status_id int NOT NULL,
+  is_active boolean NOT NULL,
+  project_name varchar  NOT NULL,
   Description varchar  NOT NULL,
-  PRIMARY KEY (Project_Type_ID)
+  PRIMARY KEY (project_id),
+  FOREIGN KEY (project_type_id) REFERENCES project_types (project_type_id),
+  FOREIGN KEY (admin_id) REFERENCES users (user_id), 
+  FOREIGN KEY (customer_id) REFERENCES users (user_id), 
+  FOREIGN KEY (steps_id) REFERENCES steps_for_each_project_type (steps_id),
+  FOREIGN KEY (project_status_id) REFERENCES project_status (project_status_id) 
 );
 
-CREATE TABLE Steps_For_Each_Project_Type (
-  Steps_ID int,
-  Project_Type_ID int NOT NULL,
-  Num_Of_Steps int  NOT NULL,
-  Name_Step_1 varchar ,
-  Approved_By_Customer_s1 bool,
-  Name_Step_2 varchar,
-  Approved_By_Customer_s2 bool,
-  Name_Step_3 varchar,
-  Approved_By_Customer_s3 bool,
-  Name_Step_4 varchar,
-  Approved_By_Customer_s4 bool,
-  Name_Step_5 varchar,
-  Approved_By_Customer_s5 bool,
-  Name_Step_6 varchar,
-  Approved_By_Customer_s6 bool,
-  Name_Step_7 varchar,
-  Approved_By_Customer_s7 bool,
-  Name_Step_8 varchar,
-  Approved_By_Customer_s8 bool,
-  Name_Step_9 varchar,
-  Approved_By_Customer_s9 bool,
-  Name_Step_10 varchar,
-  Approved_By_Customer_s10 bool,
-  Name_Step_11 varchar,
-  Approved_By_Customer_s11 bool,
-  Name_Step_12 varchar,
-  Approved_By_Customer_s12 bool,
-  Name_Step_13 varchar,
-  Approved_By_Customer_s13 bool,
-  Name_Step_14 varchar,
-  Approved_By_Customer_s14 bool,
-  Name_Step_15 varchar,
-  Approved_By_Customer_s15 bool,
-  PRIMARY KEY (Steps_ID), 
-  FOREIGN KEY (Project_Type_ID) REFERENCES Project_Types (Project_Type_ID)
-);
-
-CREATE TABLE Project_Status (
-  Project_Status_ID int,
-  Steps_ID int NOT NULL,
-  Num_Of_Steps int   NOT NULL,
-  Approved_Step_1 bool,
-  Approved_Step_2 bool,
-  Approved_Step_3 bool,
-  Approved_Step_4 bool,
-  Approved_Step_5 bool,
-  Approved_Step_6 bool,
-  Approved_Step_7 bool,
-  Approved_Step_8 bool,
-  Approved_Step_9 bool,
-  Approved_Step_10 bool,
-  Approved_Step_11 bool,
-  Approved_Step_12 bool,
-  Approved_Step_13 bool,
-  Approved_Step_14 bool,
-  Approved_Step_15 bool,
-  PRIMARY KEY (Project_Status_ID), 
-  FOREIGN KEY (Steps_ID) REFERENCES Steps_For_Each_Project_Type (Steps_ID)
-);
-
-CREATE TABLE Projects (
-  Project_ID int,
-  Project_Type_ID int NOT NULL,
-  Admin_ID int NOT NULL,
-  Customer_ID int NOT NULL,
-  Steps_ID int NOT NULL,
-  Project_Status_ID int NOT NULL,
-  Is_Active boolean NOT NULL,
-  Project_Name varchar  NOT NULL,
-  Description varchar  NOT NULL,
-  PRIMARY KEY (Project_ID),
-  FOREIGN KEY (Project_Type_ID) REFERENCES Project_Types (Project_Type_ID),
-  FOREIGN KEY (Admin_ID) REFERENCES Users (User_ID), 
-  FOREIGN KEY (Customer_ID) REFERENCES Users (User_ID), 
-  FOREIGN KEY (Steps_ID) REFERENCES Steps_For_Each_Project_Type (Steps_ID),
-  FOREIGN KEY (Project_Status_ID) REFERENCES Project_Status (Project_Status_ID) 
-);
-
-CREATE SEQUENCE Roles_Sequence START 1001;
-CREATE SEQUENCE Users_Sequence START 1001;
-CREATE SEQUENCE Project_Types_Sequence START 1001;
-CREATE SEQUENCE Steps_For_Each_Project_Type_Sequence START 1001;
-CREATE SEQUENCE Project_Status_Sequence START 1001;
-CREATE SEQUENCE Projects_Sequence START 1001;
+CREATE SEQUENCE roles_sequence START 1001;
+CREATE SEQUENCE users_sequence START 1001;
+CREATE SEQUENCE project_types_sequence START 1001;
+CREATE SEQUENCE steps_for_each_project_type_sequence START 1001;
+CREATE SEQUENCE project_status_sequence START 1001;
+CREATE SEQUENCE projects_sequence START 1001;
 
 /*Necesary Insert Statements*/
-INSERT INTO Roles VALUES (
-  nextval('Roles_Sequence'),
+INSERT INTO roles VALUES (
+  nextval('roles_sequence'),
   'admin'
 );
 
-INSERT INTO Roles VALUES (
-  nextval('Roles_Sequence'),
+INSERT INTO roles VALUES (
+  nextval('roles_sequence'),
   'client'
 );
 
-INSERT INTO Users VALUES (
-  nextval('Users_Sequence'),
-  (SELECT Role_ID from Roles WHERE Description = 'admin'),
-  'FreelanceAdmin',
-  'FreelanceAdmin1',
+INSERT INTO users VALUES (
+  nextval('users_sequence'),
+  (SELECT role_id from roles WHERE description = 'admin'),
+  'freelanceAdmin',
+  'freelanceAdmin1',
   'Freelance Administration',
   'Nefi',
   'Aguilar'
