@@ -49,7 +49,7 @@ var create_account_attempt = () => {
     || email == ""
     ){
         //Display a error message
-        error = document.getElementById("login_status")
+        error = document.getElementById("create_account_status")
         error.innerHTML = "All inputs are required";
         error.style.display = "block";        
     }
