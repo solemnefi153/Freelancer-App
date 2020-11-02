@@ -20,9 +20,10 @@
     
     #Create variable to store the status of this request
     $account_creation_status = "";
+
     try{
         #check if the username already exists in the database
-        $stmt = $db->prepare('SELECT username FROM users WHERE username = :username');
+        $stmt = $db->prepare('SELECT username FROM users WHERE username=:username');
         $stmt->bindValue(':username', $user, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
