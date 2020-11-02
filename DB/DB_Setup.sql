@@ -16,7 +16,7 @@ CREATE TABLE users (
   email varchar,
   notes text,
   PRIMARY KEY (user_id), 
-  FOREIGN KEY (role_id) REFERENCES roles (role_id), 
+  FOREIGN KEY (role_id) REFERENCES roles (role_id) 
 );
 
 CREATE TABLE project_types (

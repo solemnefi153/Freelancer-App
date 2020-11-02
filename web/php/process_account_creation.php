@@ -31,6 +31,7 @@
             echo "Username already exists";
             die();
         }
+        echo "this is happenging";
     }
     catch (PDOException $ex)
     {
@@ -47,7 +48,7 @@
     try
     {
         #Create the username in the database
-        $stmt = $db->prepare("INSERT INTO users (user_id, role_id, username, password, organization, first_name, last_name, phone_number, email)VALUES ( nextval('users_sequence'), :role_id, :username, :password, :organization, :first_name, :last_name, :phone_number, :email);");
+        $stmt = $db->prepare("INSERT INTO users (user_id, role_id, username, password, organization, first_name, last_name, phone_number, email) VALUES ( nextval('users_sequence'), :role_id, :username, :password, :organization, :first_name, :last_name, :phone_number, :email);");
         $stmt->bindValue(':role_id', $role_id, PDO::PARAM_INT);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
