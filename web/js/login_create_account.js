@@ -9,7 +9,6 @@ var login_attempt = () => {
            {
                //redirect to the the user home page
                alert("user is loged in")
-              
            }
            else
            {
@@ -51,14 +50,16 @@ var create_account_attempt = () => {
         //Display a error message
         error = document.getElementById("create_account_status")
         error.innerHTML = "All inputs are required";
-        error.style.display = "block";        
+        error.style.display = "block"; 
+        focusOnFirstEmtyInput();  
     }
     else if (password != password2)
     {
         //Display a error message
-        error = document.getElementById("login_status")
+        error = document.getElementById("create_account_status")
         error.innerHTML = "The provided passwords need to match";
-        error.style.display = "block";           
+        error.style.display = "block"; 
+        document.getElementById('password').focus()          
     }
     else
     {
@@ -120,6 +121,49 @@ var load_log_in = () => {
     }
     xhttp.open('GET', './log_in_options.php', true);
     xhttp.send();
+}
+
+var focusOnFirstEmtyInput = () => {
+
+    var username = document.getElementById('username')
+    var password = document.getElementById('password')
+    var password2 = document.getElementById('password2')
+    var role_id = document.getElementById('account_type')
+    var organization = document.getElementById('organization')
+    var first_name = document.getElementById('first_name')
+    var last_name = document.getElementById('last_name')
+    var phone_number = document.getElementById('phone_number')
+    var email = document.getElementById('email')
+    
+    if(username.value == ""){
+        username.focus()
+    }
+    else if(password.value == ""){
+        password.focus()
+    }
+    else if(password2.value == ""){
+        password2.focus()     
+    }
+    else if(role_id.value == ""){
+        role_id.focus()    
+    }
+    else if(organization.value == ""){
+        organization.focus()   
+    }
+    else if(first_name.value == ""){
+        first_name.focus()   
+    }
+    else if(last_name.value == ""){
+        last_name.focus()   
+    }
+    else if(phone_number.value == ""){
+        phone_number.focus()   
+    }
+    else if(email.value == ""){
+        email.focus()   
+    }
+
+
 }
 
 
