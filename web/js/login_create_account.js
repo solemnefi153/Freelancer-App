@@ -13,8 +13,10 @@ var login_attempt = () => {
            else
            {
                //Display a general error message
-               alert(response)
-               document.getElementById("login_status").innerHTML = response;
+
+               error = document.getElementById("login_status")
+               error.innerHTML = response;
+               error.style.display = "block";
            }
       }
   }

@@ -15,7 +15,7 @@
         </header>
         <main>
                 <div id='login_group'>
-                    <span class='alert' id="login_status"> ERROR </span>
+                    <span class='alert' id="login_status"></span>
                     <div id="login_error_message" class='error_message'></div>
                     <input type="text" class="text_input" id="username" placeholder="Username" name="username">
                     <input type="password" class="text_input" id="password" placeholder="Password" name="password">

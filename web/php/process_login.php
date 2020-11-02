@@ -33,7 +33,7 @@
                         $login_status = 'true';
                         $_SESSION['username'] = $user[0]['username'];
                         $_SESSION['active_login'] = true;
-                        $_SESSION['role'] = 'customer';
+                        $_SESSION['role_id'] = $user[0]['role_id'];;
                     }
                     else
                     {
