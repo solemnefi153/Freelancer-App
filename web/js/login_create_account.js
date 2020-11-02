@@ -75,7 +75,7 @@ var create_account_attempt = () => {
                  else
                  {
                      //Display a error message
-                     error = document.getElementById("login_status")
+                     error = document.getElementById("create_account_status")
                      error.innerHTML = response;
                      error.style.display = "block";
                  }
