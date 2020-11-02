@@ -38,6 +38,7 @@ var create_account_attempt = () => {
     var email = document.getElementById('email').value
 
 
+
     if(username == ""
     || password == ""
     || password2 == ""
@@ -91,6 +92,7 @@ var create_account_attempt = () => {
         + '&last_name=' + last_name
         + '&phone_number=' + phone_number 
         + '&email=' + email
+        alert(query)
         
         xhttp.open('POST', '../php/process_account_creation.php', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

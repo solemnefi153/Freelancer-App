@@ -25,8 +25,8 @@
         $stmt->bindValue(':username', $username, PDO::PARAM_INT);
         $stmt->execute();
         $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            #check if there is already someone with the same name, lastname, and company
-        if(sizeof($username) != 0)
+        #check if there is already someone with the same name, lastname, and company
+        if(sizeof($username) != 1)
         {
             echo "Username already exists";
             die();
