@@ -21,8 +21,8 @@
     $account_creation_status = "";
     try{
         #check if the username already exists in the database
-        $stmt = $db->prepare('SELECT username FROM users WHERE username=:username');
-        $stmt->bindValue(':username', $username, PDO::PARAM_INT);
+        $stmt = $db->prepare('SELECT username FROM users WHERE username = :username');
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $username = $stmt->fetchAll(PDO::FETCH_ASSOC);
         #check if there is already someone with the same name, lastname, and company
