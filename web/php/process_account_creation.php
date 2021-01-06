@@ -13,7 +13,7 @@
     $organization = test_input($_POST['organization']);
     $first_name = test_input($_POST['first_name']);
     $last_name = test_input($_POST['last_name']);
-    $phone_number = test_input($_POST['phone']);
+    $phone_number = test_input($_POST['phone_number']);
     $email = test_input($_POST['email']);
 
     echo $user;
